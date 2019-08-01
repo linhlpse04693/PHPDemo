@@ -14,7 +14,7 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         User::truncate();
-
+        /*
         $buyerRole=Role::where('name','buyer')->first();
         $sellerRole=Role::where('name','seller')->first();
 
@@ -32,5 +32,6 @@ class UsersTableSeeder extends Seeder
 
         $seller -> roles()->attach($sellerRole);
         $buyer -> roles()->attach($buyerRole);
+        */
     }
 }
