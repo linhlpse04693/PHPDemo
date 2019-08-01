@@ -67,7 +67,7 @@ class User extends Authenticatable
 
     public function hasBeenDeclined(){
         return null==$this->requests()->where('status_id','=','1')->first()
-            && null==$this->requests()->where('status_id','=','2')->first()
-            && !null==$this->requests()->where('status_id','-','3')->first();
+            && null== $this->roles()->where('name','seller')->first()
+            && !null==$this->requests()->where('status_id','=','3')->first();
     }
 }

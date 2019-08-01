@@ -27,7 +27,7 @@
                                 </tbody>
                             </table>
                         @elseif(Auth::user()->hasBeenDeclined())
-                            <div class="alert alert-success" role="alert">
+                            <div class="alert alert-warning" role="alert">
                                 Request has been declined
                             </div>
                             <form action="{{route('user.requests.store')}}" method="POST">

@@ -21,11 +21,19 @@
                                 </tr>
                             </tbody>
                         </table>
-
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <form action="{{route('admin.requests.update',['id' => $user_request->request_id])}}" method="POST">
                             @csrf
                             {{method_field('PUT')}}
-                            <input type="text" name="note" value="{{$user_request->note}}">
+                            <input type="text" name="note" value="{{$user_request->note}}" placeholder="Note">
                             <input type="hidden" name="user_id" value="{{$user_request->user_id}}">
                             <button type="submit" name="action" value="Accept">Accept</button>
                             <button type="submit" name="action" value="Decline">Decline</button>

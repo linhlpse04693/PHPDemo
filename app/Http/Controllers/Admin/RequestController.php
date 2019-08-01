@@ -41,6 +41,10 @@ class RequestController extends Controller
      */
     public function update(Request $request,$id)
     {
+        $this->validate($request,[
+            'note'=> 'required|min:8'
+        ]);
+
         if(($request->action) == 'Accept'){
             DB::table('role_user')
                 ->insert(['user_id'=>$request->user_id, 'role_id'=>2]);
@@ -48,7 +52,7 @@ class RequestController extends Controller
                 ->where('id',$id)
                 ->update(['status_id'=>2]);
         }else {
-           DB::table('request')
+           DB::table('requests')
                ->where('id',$id)
                ->update(['status_id'=>3, 'note'=>$request->note]);
         }
